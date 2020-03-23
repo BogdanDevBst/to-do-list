@@ -18,12 +18,24 @@ const List = () => {
       .doc("todos")
       .get()
       .then(doc => {
-        const retrievedItems = doc.data().todos;
+        const retrievedItems = doc.data().items;
         setTodoItems(retrievedItems);
       })
       .catch(err => {
         console.log(err);
       });
+  };
+
+  const getItemJsx = () => {
+    return todoItems.map(item => (
+      <>
+        <p>{item.task}</p>
+        <p>{item.created}</p>
+        <p>{item.complete}</p>
+        <p>{item.img}</p>
+        <button onClick={() => deleteFromDb(item)}>Delete</button>
+      </>
+    ));
   };
 
   const addToDb = () => {
@@ -34,7 +46,7 @@ const List = () => {
     };
 
     firestore
-      .collection("user")
+      .collection("users")
       .doc("todos")
       .set(newDoc)
       .then(() => {
@@ -55,47 +67,9 @@ const List = () => {
     };
 
     firestore
-      .collection("user")
+      .collection("users")
       .doc("todos")
       .set(newDoc)
-      .then(() => {
-        fetchTodos();
-      })
-      .catch(err => {
-        console.log(err);
-      });
-  };
-
-  const getItemJsx = () => {
-    return todoItems.map(item => (
-      <>
-        <p>{item.task}</p>
-        <p>{item.created}</p>
-        <p>{item.complete}</p>
-        <p>{item.img}</p>
-        <button onClick={() => deleteFromDb(item)}>Delete</button>
-      </>
-    ));
-  };
-
-  const addNewDoc = () => {
-    firestore
-      .collection("user")
-      .doc("todos")
-      .set()
-      .then(() => {
-        fetchTodos();
-      })
-      .catch(err => {
-        console.log(err);
-      });
-  };
-
-  const deleteDoc = () => {
-    firestore
-      .collection("user")
-      .doc("todos")
-      .delete()
       .then(() => {
         fetchTodos();
       })
@@ -107,8 +81,6 @@ const List = () => {
   return (
     <>
       <section className={styles.list}>
-        <button onClick={addNewDoc}>Add new Doc</button>
-        <button onClick={deleteDoc}>Delete new Doc</button>
         <input
           type="text"
           placeholder="Todo item..."
@@ -118,17 +90,22 @@ const List = () => {
         />
         <input
           type="text"
-          placeholder="Date..."
+          placeholder="Date created..."
           onInput={event =>
             setNewItem({ ...newItem, created: event.target.value })
           }
         />
         <input
           type="text"
-          placeholder="URL..."
+          placeholder="Task complete..."
           onInput={event =>
             setNewItem({ ...newItem, complete: event.target.value })
           }
+        />
+        <input
+          type="text"
+          placeholder="add url..."
+          onInput={event => setNewItem({ ...newItem, img: event.target.value })}
         />
         <button onClick={addToDb}>Submit</button>
         {getItemJsx()}
