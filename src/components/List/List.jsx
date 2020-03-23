@@ -26,18 +26,6 @@ const List = () => {
       });
   };
 
-  const getItemJsx = () => {
-    return todoItems.map(item => (
-      <>
-        <p>{item.task}</p>
-        <p>{item.created}</p>
-        <p>{item.complete}</p>
-        <p>{item.img}</p>
-        <button onClick={() => deleteFromDb(item)}>Delete</button>
-      </>
-    ));
-  };
-
   const addToDb = () => {
     const newItems = [...todoItems, newItem];
 
@@ -78,6 +66,18 @@ const List = () => {
       });
   };
 
+  const getItemJsx = () => {
+    return todoItems.map(item => (
+      <>
+        <p>{item.task}</p>
+        <p>{item.created}</p>
+        <p>{item.complete}</p>
+        <img src={item.img} alt={item.img} />
+        <button onClick={() => deleteFromDb(item)}>Delete</button>
+      </>
+    ));
+  };
+
   return (
     <>
       <section className={styles.list}>
@@ -97,14 +97,14 @@ const List = () => {
         />
         <input
           type="text"
-          placeholder="Task complete..."
+          placeholder="Date finished..."
           onInput={event =>
             setNewItem({ ...newItem, complete: event.target.value })
           }
         />
         <input
           type="text"
-          placeholder="add url..."
+          placeholder="Add img url..."
           onInput={event => setNewItem({ ...newItem, img: event.target.value })}
         />
         <button onClick={addToDb}>Submit</button>
