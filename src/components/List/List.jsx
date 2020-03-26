@@ -12,6 +12,8 @@ const List = () => {
     fetchTodos();
   }, []);
 
+  // fetch
+
   const fetchTodos = () => {
     firestore
       .collection("users")
@@ -25,6 +27,8 @@ const List = () => {
         console.log(err);
       });
   };
+
+  //add
 
   const addToDb = () => {
     const newItems = [...todoItems, newItem];
@@ -44,6 +48,8 @@ const List = () => {
         console.log(err);
       });
   };
+
+  //delete
 
   const deleteFromDb = item => {
     const newArray = [...todoItems];
