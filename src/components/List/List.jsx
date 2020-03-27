@@ -72,6 +72,8 @@ const List = () => {
       });
   };
 
+  //map the array and output data on browser
+
   const getItemJsx = () => {
     return todoItems.map(item => (
       <>
@@ -83,6 +85,8 @@ const List = () => {
       </>
     ));
   };
+
+  // input area
 
   return (
     <>
