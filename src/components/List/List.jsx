@@ -77,9 +77,9 @@ const List = () => {
   const getItemJsx = () => {
     return todoItems.map(item => (
       <>
-        <p>{item.task}</p>
-        <p>{item.created}</p>
-        <p>{item.complete}</p>
+        <p className={styles.task}>{item.task}</p>
+        <p className={styles.created}>{item.created}</p>
+        <p className={styles.complete}>{item.complete}</p>
         <img src={item.img} alt={item.img} />
         <button onClick={() => deleteFromDb(item)}>Delete</button>
       </>
