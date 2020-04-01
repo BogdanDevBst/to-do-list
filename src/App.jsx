@@ -1,6 +1,8 @@
 import React from "react";
 import "./App.css";
-import List from "./components/List/List";
+import "bootstrap/dist/css/bootstrap.min.css";
+import Button from "react-bootstrap/Button";
+import List from "./components/List";
 
 const App = () => {
   return <List />;
