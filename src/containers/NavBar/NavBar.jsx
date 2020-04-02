@@ -1,43 +1,20 @@
 import React from "react";
 import styles from "./NavBar.module.scss";
+import { Navbar, Button, Form } from "react-bootstrap";
 
 const NavBar = () => {
   return (
     <>
-      <Navbar bg="light">
-        <Navbar.Brand href="#home">Brand link</Navbar.Brand>
-      </Navbar>
-      <br />
-      <Navbar bg="light">
-        <Navbar.Brand>Brand text</Navbar.Brand>
-      </Navbar>
-      <br />
-      <Navbar bg="dark">
-        <Navbar.Brand href="#home">
-          <img
-            MDBIcon
-            far
-            icon="calendar-check"
-            src="/logo.svg"
-            width="30"
-            height="30"
-            className="d-inline-block align-top"
-            alt="React Bootstrap logo"
-          />
-        </Navbar.Brand>
-      </Navbar>
-      <br />
-      <Navbar bg="dark" variant="dark">
-        <Navbar.Brand href="#home">
-          <img
-            alt=""
-            src="/logo.svg"
-            width="30"
-            height="30"
-            className="d-inline-block align-top"
-          />{" "}
-          Bogdan Niculescu
-        </Navbar.Brand>
+      <Navbar bg="light" expand="lg">
+        <Navbar.Brand href="#home">Todo list by BN</Navbar.Brand>
+        <Navbar.Toggle aria-controls="basic-navbar-nav" />
+        <Navbar.Collapse id="basic-navbar-nav"></Navbar.Collapse>
+        <Form inline>
+          <Button variant="outline-success">Login</Button>
+        </Form>
+        <Form inline>
+          <Button variant="outline-success">Logout</Button>
+        </Form>
       </Navbar>
     </>
   );

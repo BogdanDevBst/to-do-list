@@ -4,13 +4,15 @@ import "./App.css";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { useState, useEffect } from "react";
 import { firestore } from "./firebase.js";
-import { NavBar } from "./containers/NavBar";
+import NavBar from "./containers/NavBar";
+// import Button from "./components/Button";
+import TodoForm from "./containers/TodoForm";
 
 const App = () => {
   const [todoList, setList] = useState([]);
   const [todoInfo, updateToDoInfo] = useState("");
   const [todoStartDate, updateToDoStartDate] = useState("");
-  const [todoEndDate, updateToDoDueDate] = useState("");
+  const [todoEndDate, updateToDoEndDate] = useState("");
   const [todoImgUrl, updateToDoImgUrl] = useState("");
   const [updateTask, setUpdateTask] = useState("");
 
@@ -36,7 +38,7 @@ const App = () => {
       .add({
         name: todoInfo,
         start: todoStartDate,
-        due: todoEndDate,
+        end: todoEndDate,
         img: todoImgUrl
       })
       .then(() => {
@@ -73,10 +75,12 @@ const App = () => {
       });
   };
 
-  return;
-  <>
-    <NavBar />
-  </>;
+  return (
+    <>
+      <NavBar />
+      <TodoForm />
+    </>
+  );
 };
 
 export default App;

@@ -1,0 +1,28 @@
+@import "../../variables.scss";
+
+.btn {
+  height: 45px;
+  width: 100px;
+  text-transform: uppercase;
+  border: $primary-border;
+  font-size: 1rem;
+
+  &:hover {
+    cursor: pointer;
+  }
+
+  &:focus {
+    outline: none;
+  }
+
+  &.primary {
+    background-color: $primary-color;
+    color: black;
+
+    &:hover {
+      background-color: $primary-color;
+      color: $secondary-color;
+      border: $secondary-color;
+    }
+  }
+}
