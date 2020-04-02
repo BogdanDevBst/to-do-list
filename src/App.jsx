@@ -4,13 +4,14 @@ import "./App.css";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { useState, useEffect } from "react";
 import { firestore } from "./firebase.js";
+import { NavBar } from "./containers/NavBar";
 
 const App = () => {
   const [todoList, setList] = useState([]);
-  const [toDoInfo, updateToDoInfo] = useState("");
-  const [toDoStartDate, updateToDoStartDate] = useState("");
-  const [toDoDueDate, updateToDoDueDate] = useState("");
-  const [toDoImgUrl, updateToDoImgUrl] = useState("");
+  const [todoInfo, updateToDoInfo] = useState("");
+  const [todoStartDate, updateToDoStartDate] = useState("");
+  const [todoEndDate, updateToDoDueDate] = useState("");
+  const [todoImgUrl, updateToDoImgUrl] = useState("");
   const [updateTask, setUpdateTask] = useState("");
 
   useEffect(() => {
@@ -33,10 +34,10 @@ const App = () => {
     firestore
       .collection("tasks")
       .add({
-        name: toDoInfo,
-        start: toDoStartDate,
-        due: toDoDueDate,
-        img: toDoImgUrl
+        name: todoInfo,
+        start: todoStartDate,
+        due: todoEndDate,
+        img: todoImgUrl
       })
       .then(() => {
         fetchTodos();
@@ -73,7 +74,9 @@ const App = () => {
   };
 
   return;
-  <></>;
+  <>
+    <NavBar />
+  </>;
 };
 
 export default App;
