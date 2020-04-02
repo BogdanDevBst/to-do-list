@@ -1,7 +1,7 @@
 import React from "react";
-import List from "./List";
+import Button from "./Button";
 
-describe("List tests", () => {
+describe("Button tests", () => {
   let component;
 
   beforeEach(() => {
