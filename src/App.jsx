@@ -67,7 +67,7 @@ const App = () => {
       <Container>
         <Row>
           <Col>
-            <h2 className={styles.heading}>Todo List</h2>
+            <h2 className={styles.heading}>Todo list</h2>
             <Form>
               <Form.Group controlId="formBasicCheckbox">
                 <Form.Control
