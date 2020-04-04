@@ -6,15 +6,9 @@ const NavBar = () => {
   return (
     <>
       <Navbar bg="light" expand="lg">
-        <Navbar.Brand href="#home">Todo list by BN</Navbar.Brand>
+        <Navbar.Brand href="#home">Todo list by Bogdan</Navbar.Brand>
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav"></Navbar.Collapse>
-        <Form inline>
-          <Button variant="outline-success">Login</Button>
-        </Form>
-        <Form inline>
-          <Button variant="outline-success">Logout</Button>
-        </Form>
       </Navbar>
     </>
   );
