@@ -14,7 +14,6 @@ const App = () => {
   const [todoStartDate, updateToDoStartDate] = useState("");
   const [todoEndDate, updateToDoEndDate] = useState("");
   const [todoImgUrl, updateToDoImgUrl] = useState("");
-  const [updateTask, setUpdateTask] = useState("");
 
   useEffect(() => {
     fetchTodos();
@@ -62,18 +61,6 @@ const App = () => {
       });
   };
 
-  const updateTodo = id => {
-    firestore
-      .collection("tasks")
-      .doc(id)
-      .set({ name: updateTask })
-      .then(() => {
-        fetchTodos();
-      })
-      .catch(err => {
-        console.log(err);
-      });
-  };
   return (
     <>
       <NavBar />
@@ -85,32 +72,32 @@ const App = () => {
               <Form.Group controlId="formBasicCheckbox">
                 <Form.Control
                   placeholder="What to do?"
-                  type="text"
+                  type="search"
                   value={todoInfo}
                   onChange={event => updateToDoInfo(event.target.value)}
                 />
                 <Form.Control
                   placeholder="When to start?"
-                  type="text"
+                  type="date"
                   value={todoStartDate}
                   onChange={event => updateToDoStartDate(event.target.value)}
                 />
                 <Form.Control
                   placeholder="When to finish?"
-                  type="text"
+                  type="date"
                   value={todoEndDate}
                   onChange={event => updateToDoEndDate(event.target.value)}
                 />
                 <Form.Control
                   placeholder="Please insert an image URL!"
-                  type="text"
+                  type="search"
                   value={todoImgUrl}
-                  onChange={event => updateToDoImgUrl(event.target.value)}
+                  onInput={event => updateToDoImgUrl(event.target.value)}
                 />
               </Form.Group>
               <div class="col text-center">
                 <Button variant="primary" onClick={createTodo}>
-                  Create Task
+                  Create task
                 </Button>
               </div>
             </Form>
@@ -123,31 +110,14 @@ const App = () => {
             <p>Task: {task.name}</p>
             <p>Start task: {task.start}</p>
             <p>Finish task: {task.end}</p>
-            <img src={task.img} />
+            <img src={task.img} alt="" />
             <div>
               <Button
                 className="text-white m-4"
                 variant="danger"
                 onClick={() => deleteTodo(task.id)}
               >
-                Delete task
-              </Button>
-            </div>
-            <div>
-              <input
-                type="text"
-                className=" "
-                placeholder={task.name}
-                onChange={event => setUpdateTask(event.target.value)}
-              ></input>
-            </div>
-            <div>
-              <Button
-                className="text-white m-2"
-                variant="success"
-                onClick={() => updateTodo(task.id)}
-              >
-                Update task
+                Delete task!
               </Button>
             </div>
           </div>
