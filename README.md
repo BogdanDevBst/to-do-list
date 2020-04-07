@@ -20,8 +20,8 @@ Deployed with Firebase.
 
 ## Built With
 
-React - Construction and functionality
-Sass - Styling
+React
+Sass
 
 ## Authors
 
