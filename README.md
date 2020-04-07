@@ -20,7 +20,7 @@ Deployed with Firebase.
 
 ## Built With
 
-React
+React and
 Sass
 
 ## Authors
