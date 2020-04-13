@@ -21,7 +21,7 @@ Deployed with Firebase.
 ## Built With
 
 React and
-Sass
+Scss
 
 ## Authors
 
@@ -30,7 +30,3 @@ Bogdan Niculescu - Initial work - [BogdanDevBst](https://github.com/BogdanDevBst
 ## License
 
 This project is licensed under the MIT License.
-
-## Acknowledgments
-
-All goes to the post-it inventor.
